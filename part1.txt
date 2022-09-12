@@ -1,0 +1,40 @@
+CSCI 3366 Programming Languages
+
+Solution to Part 1 of problem set 4. Four exercises with context-free
+grammars.  We assume given:
+
+Upper ::= A | B | ... | Z
+Lower ::= a | b | ... | z
+Special ::= 0 | ... | 9 | _
+
+
+1. CIGIdent -- Identifiers for Classes, Interfaces & Generic Variables
+
+CIGIdent ::= Upper Any
+Any ::= empty | Something Any
+Something ::= Upper | Lower | Special
+
+
+2. Type
+
+Type :: = BaseType | NonBaseType
+BaseType ::= byte | short | long | int | float | double | char | void
+NonBaseType ::= CIGIdent | CIGIdent < NonBaseTypeList >
+NonBaseTypeList ::= NonBaseType | NonBaseType , NonBaseTypeList
+
+
+3. FunSig
+
+Id ::= ... given ...
+
+FunSig ::= Type Id ( Parameters ) ;
+Parameters ::= empty | Parameter | Parameter , Parameters
+Parameter ::= Type Id
+
+
+4. Interface
+
+Inteface ::= interface NonBaseType { FunSigs }
+           | interface NonBaseType extends NonBaseType { FunSigs }
+
+FunSigs ::= empty | FunSig FunSigs

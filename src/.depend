@@ -1,0 +1,35 @@
+ast.cmi : symbol.cmi
+basis.cmi : symbol.cmi
+dynamic.cmi : env.cmi
+env.cmi : symbol.cmi
+eval.cmi : env.cmi dynamic.cmi ast.cmi
+repl.cmi : env.cmi dynamic.cmi
+symbol.cmi :
+token.cmi : symbol.cmi
+util.cmi :
+ast.cmo : symbol.cmi ast.cmi
+ast.cmx : symbol.cmx ast.cmi
+basis.cmo : symbol.cmi basis.cmi
+basis.cmx : symbol.cmx basis.cmi
+debug.cmo :
+debug.cmx :
+dynamic.cmo : util.cmi symbol.cmi env.cmi dynamic.cmi
+dynamic.cmx : util.cmx symbol.cmx env.cmx dynamic.cmi
+env.cmo : symbol.cmi basis.cmi env.cmi
+env.cmx : symbol.cmx basis.cmx env.cmi
+eval.cmo : env.cmi dynamic.cmi debug.cmo ast.cmi eval.cmi
+eval.cmx : env.cmx dynamic.cmx debug.cmx ast.cmx eval.cmi
+parser.cmo : token.cmi symbol.cmi debug.cmo ast.cmi
+parser.cmx : token.cmx symbol.cmx debug.cmx ast.cmx
+repl.cmo : tokenizer.cmo token.cmi parser.cmo eval.cmi dynamic.cmi debug.cmo \
+    ast.cmi repl.cmi
+repl.cmx : tokenizer.cmx token.cmx parser.cmx eval.cmx dynamic.cmx debug.cmx \
+    ast.cmx repl.cmi
+symbol.cmo : symbol.cmi
+symbol.cmx : symbol.cmi
+token.cmo : symbol.cmi token.cmi
+token.cmx : symbol.cmx token.cmi
+tokenizer.cmo : util.cmi token.cmi symbol.cmi
+tokenizer.cmx : util.cmx token.cmx symbol.cmx
+util.cmo : util.cmi
+util.cmx : util.cmi
